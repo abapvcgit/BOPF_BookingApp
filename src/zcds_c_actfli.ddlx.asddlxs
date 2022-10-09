@@ -1,0 +1,64 @@
+@Metadata.layer: #CUSTOMER
+annotate view zcds_c_actfli with
+{
+  @UI.facet: [
+       {
+         label: 'Active Flights',
+         id : 'actfli',
+         purpose: #STANDARD,
+         type : #COLLECTION,
+         position: 10
+     },
+
+     { type: #FIELDGROUP_REFERENCE ,
+           label : 'Flight Detail',
+           parentId: 'actfli',
+           id: 'connID' ,
+           position: 10,
+           targetQualifier: 'connid' },
+           
+       { type: #FIELDGROUP_REFERENCE ,
+       label : 'Flight Pricing',
+       parentId: 'actfli',
+       id: 'IdPricing' ,
+       position: 20,
+       targetQualifier: 'pricing' }
+  ]
+
+
+  @UI.lineItem: [{position: 10, importance: #HIGH, label: 'Airline ID' }] // report position view
+  carrid;
+
+
+  @UI.lineItem: [{position: 20, importance: #HIGH, label: 'Connection ID' }]
+  connid;
+
+
+  @UI.fieldGroup: [{qualifier: 'connid', position: 10 ,label:'Flight Date' , importance: #HIGH}]
+  @UI.lineItem: [{position: 10, importance: #HIGH, label: 'Flight Date' }]
+  fldate;
+  
+  @UI.fieldGroup: [{qualifier: 'connid', position: 20 ,label: 'Airfare', importance: #HIGH}]
+  @UI.lineItem: [{position: 40, importance: #HIGH, label: 'Airfare' }]
+  price;
+   
+  @UI.fieldGroup: [{qualifier: 'connid', position: 30 ,label: 'Plane Type', importance: #HIGH}]
+  @UI.lineItem: [{position: 50, importance: #HIGH, label: 'Plane Type' }]
+  planetype;
+  
+  @UI.fieldGroup: [{qualifier: 'pricing', position: 10 ,label: 'Capacity', importance: #HIGH}]
+  @UI.lineItem: [{position: 60, importance: #HIGH, label: 'Capacity' }]
+  seatsmax;
+  
+  @UI.fieldGroup: [{qualifier: 'pricing', position: 20 ,label: 'Occupied', importance: #HIGH}]
+  @UI.lineItem: [{position: 70, importance: #HIGH, label: 'Occupied' }]
+  seatsocc;
+  
+  @UI.fieldGroup: [{qualifier: 'pricing', position: 30 ,label: 'Booking total', importance: #HIGH}]
+  @UI.lineItem: [{position: 80, importance: #HIGH, label: 'Booking total' }]
+  paymentsum;
+  //    /* Associations */
+  //    _Currency;
+  //    _Planif;
+
+}

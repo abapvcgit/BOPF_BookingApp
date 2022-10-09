@@ -1,0 +1,88 @@
+@Metadata.layer: #CUSTOMER
+annotate view zcds_c_planif with
+{
+  @UI.facet: [
+     {
+       label: 'Connection for flights',
+       id : 'conection',
+       purpose: #STANDARD,
+       type : #COLLECTION,
+       position: 10
+   },
+
+    { type: #FIELDGROUP_REFERENCE ,
+         label : 'Airline',
+         parentId: 'conection',
+         id: 'airline' ,
+         position: 10,
+         targetQualifier: 'general' },
+
+
+     { type: #FIELDGROUP_REFERENCE ,
+         label : 'From',
+         parentId: 'conection',
+         id: 'fromdata' ,
+         position: 20,
+         targetQualifier: 'from' },
+
+         { type: #FIELDGROUP_REFERENCE ,
+         label : 'To',
+         parentId: 'conection',
+         id: 'tocitydata' ,
+         position: 30,
+         targetQualifier: 'todest' },
+     {
+         label: 'Flights',
+         id : 'FlightsData',
+         type : #LINEITEM_REFERENCE,
+         targetElement: '_Flights' ,
+         position: 20
+     },
+     { type: #IDENTIFICATION_REFERENCE ,
+           label : 'Flights',
+           parentId: 'FlightsData',
+           id: 'idIdentification1' ,
+           position: 20
+            }
+
+
+
+   ]
+
+  //  @UI.selectionField: [{position: 10}]
+
+  @UI.fieldGroup: [{qualifier: 'general', position: 10, label: 'Airline ID',importance: #HIGH }]
+  @UI.lineItem: [{position: 10, importance: #HIGH, label: 'Airline ID' }] // report order
+  carrid;
+
+  @UI.fieldGroup: [{qualifier: 'general', position: 20, label: 'Connection ID',importance: #HIGH }]
+  @UI.lineItem: [{position: 20, importance: #HIGH, label: 'Connection ID' }]
+  connid;
+
+  @UI.fieldGroup: [{qualifier: 'from', position: 10, label:'City From',importance: #HIGH }]
+  @UI.lineItem: [{position: 30, importance: #HIGH, label: 'City From' }]
+  cityfrom;
+
+  @UI.fieldGroup: [{qualifier: 'from', position: 20 , label:'Departure airport',importance: #HIGH}]
+  @UI.lineItem: [{position: 40, importance: #HIGH, label: 'Departure airport' }]
+  airpfrom;
+
+
+  @UI.fieldGroup: [{qualifier: 'todest', position: 10 ,label:'City To',importance: #HIGH}]
+  @UI.lineItem: [{position: 50, importance: #HIGH, label: 'City To' }]
+  cityto;
+
+  @UI.fieldGroup: [{qualifier: 'todest', position: 20 , label:'Destination airport',importance: #HIGH}]
+  @UI.lineItem: [{position: 60, importance: #HIGH, label: 'Destination airport' }]
+  airpto;
+
+
+
+  @UI.fieldGroup: [{qualifier: 'general', position: 40,label:'Distance',importance: #HIGH }]
+  @UI.lineItem: [{position: 70, importance: #HIGH, label: 'Distance' }]
+  distance;
+
+
+
+
+}
