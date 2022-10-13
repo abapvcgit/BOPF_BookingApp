@@ -49,9 +49,12 @@ CLASS zcl_cds_d_payment_sum IMPLEMENTATION.
         EXPORTING
           iv_node           = is_ctx-node_key                 " Node
           iv_key            = lo_actfli->key                 " Key
-*            iv_root_key       =                  " NodeID
+          iv_root_key       = lo_actfli->root_key                 " NodeID
           is_data           = lo_actfli                  " Data
-*            it_changed_fields =                  " List of Names (e.g. Fieldnames)
+          it_changed_fields =  VALUE #(
+                                        ( zif_cds_i_planif_c=>sc_node_attribute-zcds_i_actfli-seatsmax )
+                                        ( zif_cds_i_planif_c=>sc_node_attribute-zcds_i_actfli-paymentsum )
+          )                " List of Names (e.g. Fieldnames)
       ).
 
     ENDLOOP.

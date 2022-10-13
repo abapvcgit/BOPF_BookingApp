@@ -62,14 +62,16 @@ annotate view zcds_c_planif with
 
    ]
 
-  //  @UI.selectionField: [{position: 10}]
 
-  @UI.fieldGroup: [{qualifier: 'general', position: 10, label: 'Airline ID',importance: #HIGH }]
+
+  @UI.fieldGroup: [{qualifier: 'general', position: 10, label: 'Airline ID',importance: #HIGH }] // group order
   @UI.lineItem: [{position: 10, importance: #HIGH, label: 'Airline ID' }] // report order
+  @UI.selectionField: [{ position: 10 }] // filter postion
   carrid;
 
   @UI.fieldGroup: [{qualifier: 'general', position: 20, label: 'Connection ID',importance: #HIGH }]
   @UI.lineItem: [{position: 20, importance: #HIGH, label: 'Connection ID' }]
+  @UI.selectionField: [{ position: 20 }]
   connid;
 
   @UI.fieldGroup: [{qualifier: 'from', position: 10, label:'City From',importance: #HIGH }]
@@ -94,6 +96,14 @@ annotate view zcds_c_planif with
   @UI.fieldGroup: [{qualifier: 'general', position: 40,label:'Distance',importance: #HIGH }]
   @UI.lineItem: [{position: 70, importance: #HIGH, label: 'Distance' }]
   distance;
+  
+  @UI.fieldGroup: [{qualifier: 'from', position: 30,label:'Departure time',importance: #HIGH }]
+  @UI.lineItem: [{position: 80, importance: #HIGH, label: 'Departure time' }]
+  deptime;
+  
+  @UI.fieldGroup: [{qualifier: 'todest', position: 30,label:'Arrival time',importance: #HIGH }]
+  @UI.lineItem: [{position: 90, importance: #HIGH, label: 'Arrival time' }]
+  arrtime;
 
 
 

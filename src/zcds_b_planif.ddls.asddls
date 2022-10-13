@@ -14,7 +14,7 @@ define view zcds_b_planif
       airpfrom,
       cityto,
       airpto,
-      fltime,
+      fltime ,
       deptime,
       arrtime,
       distance,

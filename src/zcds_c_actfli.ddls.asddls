@@ -7,7 +7,7 @@
 
 @Metadata.allowExtensions: true
 
-@Search.searchable: true
+
 @ObjectModel:{
       createEnabled: true,
       deleteEnabled: true,
@@ -25,7 +25,7 @@ define view zcds_c_actfli
 {
   key carrid,
   key connid,
-      @Search.defaultSearchElement: true
+      
   key fldate,
       price,
       currency,

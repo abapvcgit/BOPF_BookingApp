@@ -8,7 +8,7 @@
 
 @Metadata.allowExtensions: true
 
-@Search.searchable: true
+
 @ObjectModel:{
       compositionRoot: true,
       transactionalProcessingDelegated: true,
@@ -25,13 +25,14 @@
       }
 }
 @OData.publish: true
-
 define view zcds_c_planif
   as select from zcds_i_planif
   association [0..*] to zcds_c_actfli as _Flights on $projection.carrid = _Flights.carrid
                                                 and $projection.connid = _Flights.connid
-{
+{ 
+
   key carrid,
+  
   key connid,
 
       @EndUserText.label: 'City From'
@@ -46,6 +47,12 @@ define view zcds_c_planif
 
       distance,
       distid,
+      
+      
+      
+      deptime,
+      
+      arrtime,
       /* Associations */
       
       @ObjectModel.association.type: [#TO_COMPOSITION_CHILD]

@@ -4,7 +4,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Flights  - Composite View'
 
-@Search.searchable: true
+
 
 @ObjectModel:{
 
@@ -33,7 +33,7 @@ define view zcds_i_actfli
       @ObjectModel.readOnly: true
   key connid,
   
-      @Search.defaultSearchElement: true
+     
       @ObjectModel.mandatory: true
   key fldate,
       @ObjectModel.mandatory: true

@@ -43,10 +43,10 @@ define view zcds_i_planif
       @ObjectModel.foreignKey.association: '_Airline'
       @ObjectModel.mandatory: true
   key carrid,
+      @Search.defaultSearchElement: true
       @ObjectModel.readOnly: true
   key connid,
 
-      @Search.defaultSearchElement: true
       @ObjectModel.foreignKey.association: '_CityF'
       @ObjectModel.mandatory: true
       cityfrom,
@@ -70,6 +70,9 @@ define view zcds_i_planif
       
       @ObjectModel.foreignKey.association: '_Units'
       distid,
+     
+      deptime,
+      arrtime,
       
       @ObjectModel.association.type: [#TO_COMPOSITION_CHILD]
       _Flights,

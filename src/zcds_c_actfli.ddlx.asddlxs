@@ -49,6 +49,7 @@ annotate view zcds_c_actfli with
 
   @UI.fieldGroup: [{qualifier: 'connid', position: 10 ,label:'Flight Date' , importance: #HIGH}]
   @UI.lineItem: [{position: 10, importance: #HIGH, label: 'Flight Date' }]
+  @UI.selectionField: [{ position: 30 }]
   fldate;
   
   @UI.fieldGroup: [{qualifier: 'pricing', position: 10 ,label: 'Airfare', importance: #HIGH}]
