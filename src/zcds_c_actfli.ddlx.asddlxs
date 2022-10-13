@@ -1,4 +1,17 @@
 @Metadata.layer: #CUSTOMER
+@UI:{ 
+       headerInfo:{ 
+                typeName: 'Flight',
+                typeNamePlural: 'Flight',
+                title:{ 
+                        type: #STANDARD,
+                        label: 'Flight',
+                        value: 'fldate'
+                }
+       }
+
+}
+
 annotate view zcds_c_actfli with
 {
   @UI.facet: [
@@ -38,7 +51,7 @@ annotate view zcds_c_actfli with
   @UI.lineItem: [{position: 10, importance: #HIGH, label: 'Flight Date' }]
   fldate;
   
-  @UI.fieldGroup: [{qualifier: 'connid', position: 20 ,label: 'Airfare', importance: #HIGH}]
+  @UI.fieldGroup: [{qualifier: 'pricing', position: 10 ,label: 'Airfare', importance: #HIGH}]
   @UI.lineItem: [{position: 40, importance: #HIGH, label: 'Airfare' }]
   price;
    
@@ -46,15 +59,15 @@ annotate view zcds_c_actfli with
   @UI.lineItem: [{position: 50, importance: #HIGH, label: 'Plane Type' }]
   planetype;
   
-  @UI.fieldGroup: [{qualifier: 'pricing', position: 10 ,label: 'Capacity', importance: #HIGH}]
+//  @UI.fieldGroup: [{qualifier: 'pricing', position: 20 ,label: 'Capacity', importance: #HIGH}]
   @UI.lineItem: [{position: 60, importance: #HIGH, label: 'Capacity' }]
   seatsmax;
   
-  @UI.fieldGroup: [{qualifier: 'pricing', position: 20 ,label: 'Occupied', importance: #HIGH}]
+//  @UI.fieldGroup: [{qualifier: 'pricing', position: 20 ,label: 'Occupied', importance: #HIGH}]
   @UI.lineItem: [{position: 70, importance: #HIGH, label: 'Occupied' }]
   seatsocc;
   
-  @UI.fieldGroup: [{qualifier: 'pricing', position: 30 ,label: 'Booking total', importance: #HIGH}]
+//  @UI.fieldGroup: [{qualifier: 'pricing', position: 30 ,label: 'Booking total', importance: #LOW}]
   @UI.lineItem: [{position: 80, importance: #HIGH, label: 'Booking total' }]
   paymentsum;
   //    /* Associations */

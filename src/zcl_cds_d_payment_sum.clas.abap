@@ -1,4 +1,4 @@
-CLASS zcl_d_cds_i_actfli_action_and0 DEFINITION
+CLASS zcl_cds_d_payment_sum DEFINITION
   PUBLIC
   INHERITING FROM /bobf/cl_lib_d_supercl_simple
   FINAL
@@ -14,7 +14,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_d_cds_i_actfli_action_and0 IMPLEMENTATION.
+CLASS zcl_cds_d_payment_sum IMPLEMENTATION.
 
 
   METHOD /bobf/if_frw_determination~execute.
@@ -35,24 +35,26 @@ CLASS zcl_d_cds_i_actfli_action_and0 IMPLEMENTATION.
 *        et_node_cat             =                  " Node Category Assignment
   ).
 
-    DATA(lo_helper_paymentsum) = NEW /bobf/cl_lib_h_set_property( io_modify = io_modify
-                                                     is_context = is_ctx ).
-
-    DATA(lo_helper_capacity) = NEW /bobf/cl_lib_h_set_property( io_modify = io_modify
-    is_context = is_ctx ).
 
     LOOP AT lt_actfli REFERENCE INTO DATA(lo_actfli) .
 
+      SELECT seatsmax UP TO 1 ROWS
+        INTO @DATA(lv_seatsmax)
+        FROM saplane
+        WHERE planetype EQ @lo_actfli->planetype.
+      ENDSELECT.
+      lo_actfli->seatsmax = lv_seatsmax.
+      lo_actfli->paymentsum = lo_actfli->seatsmax * lo_actfli->price.
+      io_modify->update(
+        EXPORTING
+          iv_node           = is_ctx-node_key                 " Node
+          iv_key            = lo_actfli->key                 " Key
+*            iv_root_key       =                  " NodeID
+          is_data           = lo_actfli                  " Data
+*            it_changed_fields =                  " List of Names (e.g. Fieldnames)
+      ).
 
-      lo_helper_paymentsum->set_attribute_read_only(
-          iv_attribute_name = zif_cds_i_planif_c=>sc_node_attribute-zcds_i_actfli-paymentsum
-          iv_key            = lo_actfli->key ).
-
-      lo_helper_capacity->set_attribute_read_only(
-        iv_attribute_name = zif_cds_i_planif_c=>sc_node_attribute-zcds_i_actfli-seatsmax
-        iv_key            = lo_actfli->key ).
     ENDLOOP.
-
 
   ENDMETHOD.
 ENDCLASS.

@@ -1,4 +1,17 @@
 @Metadata.layer: #CUSTOMER
+@UI:{ 
+       headerInfo:{ 
+                typeName: 'Connection',
+                typeNamePlural: 'Connections',
+                title:{ 
+                        type: #STANDARD,
+                        label: 'Connections',
+                        value: 'connid'
+                }
+       }
+
+}
+
 annotate view zcds_c_planif with
 {
   @UI.facet: [

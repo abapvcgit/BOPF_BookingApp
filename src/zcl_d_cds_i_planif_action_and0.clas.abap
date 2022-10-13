@@ -1,22 +1,24 @@
-class ZCL_D_CDS_I_PLANIF_ACTION_AND0 definition
-  public
-  inheriting from /BOBF/CL_LIB_D_SUPERCL_SIMPLE
-  final
-  create public .
+CLASS zcl_d_cds_i_planif_action_and0 DEFINITION
+  PUBLIC
+  INHERITING FROM /bobf/cl_lib_d_supercl_simple
+  FINAL
+  CREATE PUBLIC .
 
-public section.
+  PUBLIC SECTION.
 
-  methods /BOBF/IF_FRW_DETERMINATION~EXECUTE
-    redefinition .
-protected section.
-private section.
+    METHODS /bobf/if_frw_determination~execute
+        REDEFINITION .
+  PROTECTED SECTION.
+  PRIVATE SECTION.
 ENDCLASS.
 
 
 
-CLASS ZCL_D_CDS_I_PLANIF_ACTION_AND0 IMPLEMENTATION.
+CLASS zcl_d_cds_i_planif_action_and0 IMPLEMENTATION.
 
 
-  method /BOBF/IF_FRW_DETERMINATION~EXECUTE.
-  endmethod.
+  METHOD /bobf/if_frw_determination~execute.
+
+
+  ENDMETHOD.
 ENDCLASS.

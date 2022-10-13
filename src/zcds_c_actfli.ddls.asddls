@@ -10,22 +10,18 @@
 @Search.searchable: true
 @ObjectModel:{
       createEnabled: true,
-      updateEnabled: true,
       deleteEnabled: true,
-
+      updateEnabled: true,
       usageType:{
          serviceQuality: #X,
          sizeCategory: #S,
          dataClass: #TRANSACTIONAL
       }
 }
-
-
 define view zcds_c_actfli
   as select from zcds_i_actfli
   association [1] to zcds_c_planif as _Planif on $projection.carrid = _Planif.carrid
-                                             and $projection.connid = _Planif.connid
-  
+                                           and $projection.connid = _Planif.connid
 {
   key carrid,
   key connid,

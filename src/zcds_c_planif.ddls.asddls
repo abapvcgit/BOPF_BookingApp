@@ -13,9 +13,9 @@
       compositionRoot: true,
       transactionalProcessingDelegated: true,
       createEnabled: true,
-      updateEnabled: true,
       deleteEnabled: true,
-
+       updateEnabled: true,
+      semanticKey: ['connid'],
       usageType:{
          serviceQuality: #X,
          sizeCategory: #S,
@@ -26,13 +26,11 @@
 }
 @OData.publish: true
 
-
 define view zcds_c_planif
   as select from zcds_i_planif
   association [0..*] to zcds_c_actfli as _Flights on $projection.carrid = _Flights.carrid
                                                 and $projection.connid = _Flights.connid
 {
-
   key carrid,
   key connid,
 
@@ -56,5 +54,6 @@ define view zcds_c_planif
       _CityF,
       _AirportF,
       _CityT,
-      _AirportT
+      _AirportT,
+      _Units
 }
