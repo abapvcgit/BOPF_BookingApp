@@ -1,0 +1,102 @@
+@Metadata.layer: #CUSTOMER
+@UI:{
+       headerInfo:{
+                typeName: 'Booking',
+                typeNamePlural: 'Bookings',
+                title:{
+                        type: #STANDARD,
+                        label: 'Bookings',
+                        value: 'bookid'
+                }
+       }
+
+}
+annotate view zcds_c_bookings with
+{
+  @UI.facet: [
+     {
+       label: 'Bookings',
+       id : 'booking',
+       purpose: #STANDARD,
+       type : #COLLECTION,
+       position: 10
+   },
+
+    { type: #FIELDGROUP_REFERENCE ,
+         label : 'Booking Flight',
+         parentId: 'booking',
+         id: 'Flight' ,
+         position: 10,
+         targetQualifier: 'planif' },
+
+     { type: #FIELDGROUP_REFERENCE ,
+         label : 'Customer Data',
+         parentId: 'booking',
+         id: 'Customer' ,
+         position: 20,
+         targetQualifier: 'custom' },
+
+      { type: #FIELDGROUP_REFERENCE ,
+         label : 'Pricing Data',
+         parentId: 'booking',
+         id: 'Pricing' ,
+         position: 20,
+         targetQualifier: 'pricing' }
+
+   ]
+
+
+  @UI.lineItem: [{position: 10, importance: #HIGH, label: 'Airline ID' }] // report order
+  @UI.fieldGroup: [{qualifier: 'planif', position: 10, label: 'Airline ID',importance: #HIGH }] // group order
+  @UI.selectionField: [{ position: 10 }] // filter postion
+  carrid;
+
+  @UI.lineItem: [{position: 20, importance: #HIGH, label: 'Connection ID' }]
+  @UI.fieldGroup: [{qualifier: 'planif', position: 20, label: 'Connection ID',importance: #HIGH }]
+  @UI.selectionField: [{ position: 20 }] // filter postion
+  connid;
+
+  @UI.lineItem: [{position: 30, importance: #HIGH, label: 'Flight Date' }]
+  @UI.fieldGroup: [{qualifier: 'planif', position: 30, label: 'Flight Date',importance: #HIGH }]
+  fldate;
+
+  @UI.lineItem: [{position: 40, importance: #HIGH, label: 'Book. no.' }]
+  @UI.fieldGroup: [{qualifier: 'planif', position: 40, label: 'Book. no.',importance: #HIGH }]
+  @UI.selectionField: [{ position: 30 }] // filter postion
+  bookid;
+
+  @UI.lineItem: [{position: 50, importance: #HIGH, label: 'Cust. No.' }]
+  @UI.fieldGroup: [{qualifier: 'custom', position: 10, label: 'Customer Number',importance: #HIGH }]
+  customid;
+
+  @UI.lineItem: [{position: 60, importance: #HIGH, label: 'B/P customer' }]
+  @UI.fieldGroup: [{qualifier: 'custom', position: 20, label: 'B/P customer',importance: #HIGH }]
+  custtype;
+
+  @UI.lineItem: [{position: 70, importance: #HIGH, label: 'Smoker' }]
+  @UI.fieldGroup: [{qualifier: 'custom', position: 30, label: 'Smoker',importance: #HIGH }]
+  
+  smoker;
+
+  @UI.lineItem: [{position: 80, importance: #HIGH, label: 'Lug.weight' }]
+  @UI.fieldGroup: [{qualifier: 'custom', position: 40, label: 'Lug.weight',importance: #HIGH }]
+  luggweight;
+
+  
+  @UI.fieldGroup: [{qualifier: 'pricing', position: 10, label: 'Invoice',importance: #HIGH }]
+  @UI.lineItem: [{position: 90, importance: #HIGH, label: 'Invoice' }]
+  invoice;
+
+  @UI.lineItem: [{position: 100, importance: #HIGH, label: 'Class' }]
+  @UI.fieldGroup: [{qualifier: 'planif', position: 50, label: 'Class',importance: #HIGH }]
+  class;
+
+  @UI.lineItem: [{position: 120, importance: #HIGH, label: 'Amount (for.currency)' }]
+  @UI.fieldGroup: [{qualifier: 'pricing', position: 20, label: 'Amount (for.currency)',importance: #HIGH }]
+  forcuram;
+
+ 
+  @UI.lineItem: [{position: 130, importance: #HIGH, label: 'Book. date' }]
+  order_date;
+
+}

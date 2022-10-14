@@ -74,6 +74,7 @@ define view zcds_i_planif
       deptime,
       arrtime,
       
+      
       @ObjectModel.association.type: [#TO_COMPOSITION_CHILD]
       _Flights,
       _Airline,

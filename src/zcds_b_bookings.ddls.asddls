@@ -13,7 +13,7 @@ define view zcds_b_bookings
   key bookid,
       customid,
       custtype,
-      smoker,
+      cast(smoker as boolean preserving type) as smoker,
       luggweight,
       wunit,
       invoice,
