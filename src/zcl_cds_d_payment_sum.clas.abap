@@ -58,6 +58,6 @@ CLASS zcl_cds_d_payment_sum IMPLEMENTATION.
       ).
 
     ENDLOOP.
-
+   io_modify->end_modify( iv_process_immediately = abap_true ).
   ENDMETHOD.
 ENDCLASS.

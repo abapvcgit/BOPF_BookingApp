@@ -59,8 +59,12 @@ annotate view zcds_c_bookings with
   @UI.lineItem: [{position: 30, importance: #HIGH, label: 'Flight Date' }]
   @UI.fieldGroup: [{qualifier: 'planif', position: 30, label: 'Flight Date',importance: #HIGH }]
   fldate;
+  
 
-  @UI.lineItem: [{position: 40, importance: #HIGH, label: 'Book. no.' }]
+  @UI.lineItem: [ 
+                    {position: 40, importance: #HIGH, label: 'Book. no.'} , // report position
+                    {position: 10, importance: #LOW, type: #FOR_ACTION, dataAction: 'BOPF:SET_INVOICE', label: 'Set Invoice'} // button action definition
+  ]
   @UI.fieldGroup: [{qualifier: 'planif', position: 40, label: 'Book. no.',importance: #HIGH }]
   @UI.selectionField: [{ position: 30 }] // filter postion
   bookid;
@@ -73,29 +77,32 @@ annotate view zcds_c_bookings with
   @UI.fieldGroup: [{qualifier: 'custom', position: 20, label: 'B/P customer',importance: #HIGH }]
   custtype;
 
+
   @UI.lineItem: [{position: 70, importance: #HIGH, label: 'Smoker' }]
   @UI.fieldGroup: [{qualifier: 'custom', position: 30, label: 'Smoker',importance: #HIGH }]
-  
+
   smoker;
 
   @UI.lineItem: [{position: 80, importance: #HIGH, label: 'Lug.weight' }]
   @UI.fieldGroup: [{qualifier: 'custom', position: 40, label: 'Lug.weight',importance: #HIGH }]
   luggweight;
 
-  
+
   @UI.fieldGroup: [{qualifier: 'pricing', position: 10, label: 'Invoice',importance: #HIGH }]
   @UI.lineItem: [{position: 90, importance: #HIGH, label: 'Invoice' }]
   invoice;
 
-  @UI.lineItem: [{position: 100, importance: #HIGH, label: 'Class' }]
+  //  @UI.lineItem: [{position: 100, importance: #HIGH, label: 'Class' }]
   @UI.fieldGroup: [{qualifier: 'planif', position: 50, label: 'Class',importance: #HIGH }]
   class;
+  @UI.lineItem: [{position: 100, importance: #HIGH, label: 'Class' }]
+  TxClass;
 
   @UI.lineItem: [{position: 120, importance: #HIGH, label: 'Amount (for.currency)' }]
   @UI.fieldGroup: [{qualifier: 'pricing', position: 20, label: 'Amount (for.currency)',importance: #HIGH }]
   forcuram;
 
- 
+
   @UI.lineItem: [{position: 130, importance: #HIGH, label: 'Book. date' }]
   order_date;
 

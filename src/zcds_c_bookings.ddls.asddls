@@ -21,7 +21,6 @@
       }
 }
 @OData.publish: true
-
 define view zcds_c_bookings as select from zcds_i_bookings {
     key carrid,
     key connid,
@@ -34,6 +33,7 @@ define view zcds_c_bookings as select from zcds_i_bookings {
     wunit,
     invoice,
     class,
+    TxClass,
     forcuram,
     forcurkey,
     loccuram,

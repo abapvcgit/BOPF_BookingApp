@@ -45,6 +45,13 @@ CLASS zcl_d_cds_i_bookings_action_an IMPLEMENTATION.
     DATA(lo_helper_custtype) = NEW /bobf/cl_lib_h_set_property( io_modify = io_modify
     is_context = is_ctx ).
 
+    DATA(lo_helper_carrid) = NEW /bobf/cl_lib_h_set_property( io_modify = io_modify
+    is_context = is_ctx ).
+
+    DATA(lo_helper_customid) = NEW /bobf/cl_lib_h_set_property( io_modify = io_modify
+    is_context = is_ctx ).
+
+
     LOOP AT lt_bookings REFERENCE INTO DATA(lo_booking).
 
       lo_helper_conid->set_attribute_read_only(
@@ -57,6 +64,14 @@ CLASS zcl_d_cds_i_bookings_action_an IMPLEMENTATION.
 
       lo_helper_custtype->set_attribute_read_only(
       iv_attribute_name = zif_cds_i_bookings_c=>sc_node_attribute-zcds_i_bookings-custtype
+      iv_key            = lo_booking->key ).
+
+      lo_helper_carrid->set_attribute_read_only(
+      iv_attribute_name = zif_cds_i_bookings_c=>sc_node_attribute-zcds_i_bookings-carrid
+      iv_key            = lo_booking->key ).
+
+      lo_helper_customid->set_attribute_read_only(
+      iv_attribute_name = zif_cds_i_bookings_c=>sc_node_attribute-zcds_i_bookings-customid
       iv_key            = lo_booking->key ).
 
     ENDLOOP.
